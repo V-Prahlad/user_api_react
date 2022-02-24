@@ -66,14 +66,14 @@
 }
 
 .card__button div {
-  margin-top: 5px;
+  margin-top: 0.5px;
 }
 
-.liked__heart {
+#liked__heart {
   color: #e60965;
 }
 
-#card__button_heart {
+.card__button_heart {
   transition: 0.4s ease-in;
 }
 
@@ -84,7 +84,7 @@
   transform: scale(1.05);
 }
 
-#card__button_heart:hover {
+.card__button_heart:hover {
   color: #e60965;
   transform: scale(1.7);
 }

@@ -13,20 +13,17 @@ function Data() {
       .then((response) => {
         let users = [];
         response.data.results.map((user, index) => {
-          console.log(user);
           let userObj = {
             id: user?.login?.uuid,
             profile: user?.picture?.medium,
             fullName: user?.name?.first + " " + user?.name?.last,
             email: user?.email,
             phone: user?.phone,
-            city: user?.location?.city,
             status: false,
             index,
           };
           return users.push(userObj);
         });
-        console.log(users);
         setUserData(users);
       })
       .catch((error) => {

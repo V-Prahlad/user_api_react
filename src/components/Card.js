@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { HeartFilled, EditFilled, DeleteFilled } from "@ant-design/icons";
+import EditUser from "./EditUser";
 
 const Card = ({ data, handleDelete }) => {
   const [userData, setUserData] = useState({ ...data });
+  const [showmodel, setShowmodel] = useState(false);
 
   const handleChecked = () => {
     const obj = { ...userData };
@@ -10,6 +12,13 @@ const Card = ({ data, handleDelete }) => {
     setUserData(obj);
   };
 
+  const handleEdit = (obj) => {
+    setShowmodel(true);
+  };
+
+  const handleCallBack = (obj) => {
+    setUserData(obj);
+  };
   return (
     <div className="card">
       <div className="card__image">
@@ -27,13 +36,23 @@ const Card = ({ data, handleDelete }) => {
       <div className="card__button">
         <div>
           <HeartFilled
-            className={userData.status ? "liked__heart" : ""}
-            id="card__button_heart"
+            id={userData.status ? "liked__heart" : ""}
+            className="card__button_heart"
             onClick={() => handleChecked()}
           />
         </div>
         <div className="card__button_edit">
-          <EditFilled />
+          <EditFilled
+            onClick={() => {
+              handleEdit(userData);
+            }}
+          />
+          <EditUser
+            userData={userData}
+            model={showmodel}
+            setShowmodel={setShowmodel}
+            callBack={handleCallBack}
+          />
         </div>
         <div>
           <DeleteFilled
